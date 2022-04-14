@@ -37,7 +37,7 @@ exports.getEditProduct = (req, res, next) => {
   });
 };
 
-exports.postEditproduct = (req, res, next) => {
+exports.postEditProduct = (req, res, next) => {
   const prodId = req.body.productId;
   const updatedTitle = req.body.title;
   const updatedPrice = req.body.price;
@@ -49,9 +49,8 @@ exports.postEditproduct = (req, res, next) => {
     updatedImageUrl,
     updatedDesc,
     updatedPrice
-  )
+  );
   updatedProduct.save();
-  console.log(updatedDesc);
   res.redirect('/admin/products');
 };
 
@@ -65,6 +64,8 @@ exports.getProducts = (req, res, next) => {
   });
 };
 
-exports.postDeeleteProduct = (req, res, next) => {
+exports.postDeleteProduct = (req, res, next) => {
   const prodId = req.body.productId;
+  Product.deleteById(prodId);
+  res.redirect('/admin/products');
 };
